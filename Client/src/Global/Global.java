@@ -10,9 +10,9 @@ public class Global {
 
 	public static String state = "";
 	public static String control = "";
-	
-	
-	
+
+
+
 	public static String getState() {
 		return state;
 	}
