@@ -18,6 +18,7 @@ public class DeviceInfo {
 	String state; // Current Device State on, off
 	String event; // When an event is requested
 	boolean isEvent;
+	int dimming; // LED dimming value
 
 	public DeviceInfo(String deviceID, String state, String mode) {
 		this.deviceID = deviceID;
@@ -85,21 +86,19 @@ public class DeviceInfo {
 		this.isEvent = isEvent;
 	}
 
-	public boolean ControlEvent(String newState) {
-		this.event = newState;
+	public int getDimming() {
+		return dimming;
+	}
+
+	public void setDimming(int dimming) {
+		this.dimming = dimming;
+	}
+
+	public boolean ControlEvent(int dim) {
+		this.dimming = dim;
 		if (this.mode.equals("pull")) {
 			this.isEvent = true;
 		}
-		
-		else  {
-			if(this.resource==null) {
-				return false;
-			} else {
-				this.resource.changed();	
-			}			
-		}
-		
 		return true;
 	}
-
 }
